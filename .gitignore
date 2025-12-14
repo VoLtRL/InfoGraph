@@ -1,0 +1,42 @@
+# --- CMake Build Directories ---
+build/
+build_*/
+cmake-build-*/
+out/
+
+# --- CMake Build Files ---
+CMakeCache.txt
+CMakeFiles/
+cmake_install.cmake
+Makefile
+*.ninja
+install_manifest.txt
+compile_commands.json
+CTestTestfile.cmake
+_deps/
+
+# --- Fichiers Objet et Binaires ---
+*.o
+*.obj
+
+# Bibliothèques
+*.a
+*.lib
+*.so
+*.so.*
+*.dylib
+*.dll
+
+# Exécutables
+*.exe
+*.pdb
+
+# --- Fichiers Système et IDE ---
+# Mac
+.DS_Store
+
+# VS Code / Visual Studio / CLion
+.vscode/
+.vs/
+.idea/
+*.user
