@@ -68,6 +68,10 @@ void Viewer::run()
         // clear draw buffer
         glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 
+        if (update_callback) {
+            update_callback();
+        }
+
         glm::mat4 model = glm::mat4(1.0f);
 
         glm::mat4 rot_mat = glm::mat4(1.0f);
@@ -75,9 +79,10 @@ void Viewer::run()
         glm::mat4 sca_mat = glm::mat4(1.0f);
         glm::mat4 view = tra_mat * rot_mat * sca_mat;
 
-        glm::mat4 projection = glm::perspective(glm::radians(45.0f), 1.0f, 0.1f, 10.0f);
+        glm::mat4 projection = glm::perspective(glm::radians(45.0f), 1.0f, 0.1f, 50.0f);
 
         scene_root->draw(model, view, projection);
+
 
         // Poll for and process events
         glfwPollEvents();

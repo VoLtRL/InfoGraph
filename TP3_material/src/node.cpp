@@ -28,6 +28,10 @@ void Node::draw(glm::mat4& model, glm::mat4& view, glm::mat4& projection) {
     }
 }
 
+void Node::set_transform(const glm::mat4& transform) {
+    transform_ = transform;
+}
+
 void Node::key_handler(int key) const {
     for (const auto& child : children_) {
             child->key_handler(key);

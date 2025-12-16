@@ -13,8 +13,9 @@ public:
     void add(Node* node);
     void add(Shape* shape);
     void draw(glm::mat4& model, glm::mat4& view, glm::mat4& projection);
+    void set_transform(const glm::mat4 &transform);
     void key_handler(int key) const;
-    
+
 private:
     glm::mat4 transform_;
     std::vector<Node *> children_;

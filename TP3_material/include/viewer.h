@@ -10,6 +10,8 @@
 #include "shader.h"
 #include "node.h"
 
+#include <functional>
+
 class Viewer {
 public:
     Viewer(int width=640, int height=480);
@@ -18,6 +20,8 @@ public:
     void on_key(int key);
 
     Node *scene_root;
+
+    std::function<void()> update_callback;
 
 private:
     GLFWwindow* win;
