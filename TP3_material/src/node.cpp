@@ -28,6 +28,7 @@ void Node::draw(glm::mat4& model, glm::mat4& view, glm::mat4& projection) {
     }
 }
 
+// Met à jour la matrice de transformation du noeud
 void Node::set_transform(const glm::mat4& transform) {
     transform_ = transform;
 }
