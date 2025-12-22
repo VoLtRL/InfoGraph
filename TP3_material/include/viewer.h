@@ -21,7 +21,7 @@ public:
 
     Node *scene_root;
 
-    std::function<void()> update_callback;
+    std::function<void()> update_callback; // Fonction de rappel pour les mises à jour par frame
 
 private:
     GLFWwindow* win;
