@@ -13,7 +13,7 @@ void TexturedSphere::draw(glm::mat4& model, glm::mat4& view, glm::mat4& projecti
     // TODO activate, bind the texture
     glActiveTexture(GL_TEXTURE1);
     glBindTexture(GL_TEXTURE_2D, texture->getGLid());
-    glUniform1i(loc_diffuse_map, 1); // TODO send the correct texture to the shader
+    glUniform1i(loc_diffuse_map, 0); // TODO send the correct texture to the shader
 
     Sphere::draw(model, view, projection);
 
