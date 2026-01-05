@@ -6,6 +6,7 @@ project(OpenGLProgram)
 set(SRC_DIR src)
 set(INCLUDE_DIR include)
 set(EXTERNAL_DIR external)
+set(TEXTURE_DIR textures)
 set(GLEW_DIR ${EXTERNAL_DIR}/glew-cmake)
 set(GLFW_DIR ${EXTERNAL_DIR}/glfw)
 set(GLM_DIR ${EXTERNAL_DIR}/glm)
@@ -32,8 +33,11 @@ set(SOURCES
     ${SRC_DIR}/lighting_sphere.cpp
 )
 
+file(COPY ${CMAKE_CURRENT_SOURCE_DIR}/textures DESTINATION ${CMAKE_CURRENT_BINARY_DIR})
+
 # Define Shader director
 add_compile_definitions(SHADER_DIR="${CMAKE_CURRENT_SOURCE_DIR}/shaders/")
+
 
 # GLEW library
 add_subdirectory(${GLEW_DIR})

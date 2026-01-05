@@ -10,23 +10,30 @@ uniform vec3 objectColor;
 
 void main()
 {
-    // ambient
-    // TODO define ambient strength
-    vec3 ambient = vec3(0);   // TODO calculate corrcet ambient color
-
-    // diffuse 
+// 1. AMBIENT
+    float ambientStrength = 0.1; // Define a low constant strength
+    vec3 ambient = ambientStrength * lightColor;
+  
+    // 2. DIFFUSE 
     vec3 norm = normalize(Normal);
-    vec3 lightDir = vec3(0);// TODO calculate light direction
-    float diff = 0.0; // TODO calculate correct diffuse strength
+    // Calculate direction from fragment to light
+    vec3 lightDir = normalize(LightPos - FragPos); 
+    // Calculate impact of light based on angle (dot product)
+    float diff = max(dot(norm, lightDir), 0.0); 
     vec3 diffuse = diff * lightColor;
     
-    // specular
-    float specularStrength = 0.3;
-    vec3 viewDir = normalize(-FragPos); // the viewer is always at (0,0,0) in view-space, so viewDir is (0,0,0) - Position => -Position
-    vec3 reflectDir = reflect(-lightDir, norm);  
-    float spec = pow(max(dot(viewDir, reflectDir), 0.0), 32);
-    vec3 specular = vec3(0);   // TODO calculate corrcet specular color
+    // 3. SPECULAR
+    float specularStrength = 0.5;
+    vec3 viewDir = normalize(-FragPos); // Viewer is at (0,0,0) in view-space
     
-    vec3 result = objectColor; // TODO apply ambient, diffuse and specular to object color
+    vec3 reflectDir = reflect(-lightDir, norm);  
+    
+    // Calculate specular component (raised to power of 32 for shininess)
+    float spec = pow(max(dot(viewDir, reflectDir), 0.0), 32);
+    vec3 specular = specularStrength * spec * lightColor;  
+    
+    // 4. RESULT
+    // Combine all components and multiply by the object's color
+    vec3 result = (ambient + diffuse + specular) * objectColor;
     FragColor = vec4(result, 1.0);
 }

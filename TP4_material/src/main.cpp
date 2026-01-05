@@ -13,7 +13,7 @@
 int main()
 {
     // create window, add shaders & scene objects, then run rendering loop
-    Viewer viewer;
+    Viewer viewer(1280, 720);
 
     // get shader directory
     std::string shader_dir = SHADER_DIR;
