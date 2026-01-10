@@ -15,7 +15,9 @@
 Texture::Texture(const std::string& tex_file, GLenum wrap_mode, GLenum min_filter, GLenum mag_filter)
     : glid_(0)
 {
+    // generate texture ID
     glGenTextures(1, &glid_);
+    // bind texture
     glBindTexture(GL_TEXTURE_2D, glid_);
 
     // load texture image
@@ -26,6 +28,7 @@ Texture::Texture(const std::string& tex_file, GLenum wrap_mode, GLenum min_filte
         throw std::runtime_error("Failed to load texture from file");
     }
 
+    // determine format
     GLenum format;
     if (num_channels == 1) {
         format = GL_RED;

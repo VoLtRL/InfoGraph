@@ -5,5 +5,6 @@ in vec2 frag_tex_coords;
 out vec4 out_color;
 
 void main() {
+    // sample the texture at the given texture coordinates
     out_color = texture(diffuse_map, frag_tex_coords);
 }

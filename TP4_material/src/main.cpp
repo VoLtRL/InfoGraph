@@ -18,10 +18,14 @@ int main()
     // get shader directory
     std::string shader_dir = SHADER_DIR;
 
+    // textured sphere
     Shader *texture_shader = new Shader(shader_dir + "texture.vert", shader_dir + "texture.frag");
 
+    // load texture
     Texture *texture = new Texture("./textures/texture1.png");
+    // create a textured sphere
     Shape* sphere1 = new TexturedSphere(texture_shader, texture);
+    
     glm::mat4 sphere1_mat = glm::translate(glm::mat4(1.0f), glm::vec3(-1.0f, 0.0f, -4.0f))
         * glm::scale(glm::mat4(1.0f), glm::vec3(1.0f, 1.0f, 1.0f))
         * glm::rotate(glm::mat4(1.0f), glm::radians(0.0f), glm::vec3(1.0f, 0.0f, 0.0f));
@@ -32,9 +36,12 @@ int main()
 
     viewer.scene_root->add(sphere1_node);
     
+    // lighting sphere
     Shader *phong_shader = new Shader(shader_dir + "phong.vert", shader_dir + "phong.frag");
 
+    // create a lighting sphere
     Shape* sphere2 = new LightingSphere(phong_shader, glm::vec3(0.0f, 1.0f, 0.0f), glm::vec3(1.0f, 1.0f, 1.0f), glm::vec3(0.0f, 0.0f, 1.0f));
+
     glm::mat4 sphere2_mat = glm::translate(glm::mat4(1.0f), glm::vec3(1.0f, 0.0f, -4.0f))
         * glm::scale(glm::mat4(1.0f), glm::vec3(1.0f, 1.0f, 1.0f))
         * glm::rotate(glm::mat4(1.0f), glm::radians(0.0f), glm::vec3(1.0f, 0.0f, 0.0f));
